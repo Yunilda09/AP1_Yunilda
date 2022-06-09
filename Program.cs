@@ -1,23 +1,19 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
-
+using Registro_AP1;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddTransient<AportesBLL>();
-
-var ConStr = builder.Configuration.GetConnectionString("ConStr");
+builder.Services.AddTransient<AporteBLL>();
 
 builder.Services.AddDbContext<Contexto>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString
-    ("ConStr"))
-    );
-
-
+options.UseSqlite(builder.Configuration.GetConnectionString
+("ConStr"))
+);
 
 var app = builder.Build();
 
