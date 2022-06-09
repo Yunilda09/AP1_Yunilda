@@ -35,9 +35,9 @@
             </div>
 
              <div class="form-group">
-                <label>Salario</label>
-                <InputNumber @bind-Value="aportes.Salario" class="form-control" />
-                <ValidationMessage For="@(() => aportes.Salario)" />
+                <label>Monto</label>
+                <InputNumber @bind-Value="aportes.Monto" class="form-control" />
+                <ValidationMessage For="@(() => aportes.Monto)" />
             </div>
         
         <div class="card-footer">
@@ -94,7 +94,7 @@
         }
         else
         {
-            {}
+            
         }
 
     }
