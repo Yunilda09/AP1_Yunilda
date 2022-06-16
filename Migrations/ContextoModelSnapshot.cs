@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace RegistroA.Migrations
+namespace Registro_AP1.Migrations
 {
     [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
@@ -15,22 +15,22 @@ namespace RegistroA.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.5");
 
-            modelBuilder.Entity("Aportes", b =>
+            modelBuilder.Entity("Aporte", b =>
                 {
-                    b.Property<int>("PersonaId")
+                    b.Property<int>("AporteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<double>("Monto")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Persona")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Salario")
-                        .HasColumnType("REAL");
+                    b.HasKey("AporteId");
 
-                    b.HasKey("PersonaId");
-
-                    b.ToTable("aportes");
+                    b.ToTable("Aporte");
                 });
 #pragma warning restore 612, 618
         }

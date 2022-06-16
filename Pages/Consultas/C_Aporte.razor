@@ -1,0 +1,91 @@
+@page "/Aportes"
+
+@inject AporteBLL aporteBLL
+
+<EditForm Model="lista">
+    <DataAnnotationsValidator />
+    <div class="card">
+        <div class="card-header">
+            <h3>Consulta de Aportes</h3>
+        </div>
+        <div class="card-body">
+            <form>
+                <select class="form-group col-md-4" @bind="Filtro">
+                    <option value="1">Aportes Id</option>
+                    <option value="2">Persona</option>
+                </select>
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label>Desde</label>
+                        <input type="date" class="form-control" @bind="Desde" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Hasta</label>
+                        <input type="date" class="form-control" @bind="Hasta" />
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Persona</label>
+                    <input type="text" class="form-control" @bind="Persona" />
+                </div>
+                <button type="button" class="btn btn-warning" @onclick="Buscar">
+                    <i class="oi oi-magnifying-glass mr-6" /> Buscar
+                </button>
+            </form>
+        </div>
+    </div>
+    <table class="table table-secondary">
+        <thead class="thead-dark">
+            <tr class="table-info">
+                <th>Aporte Id</th>
+                <th>Persona</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aporte in lista)
+            {
+                <tr>
+                    <td>@aporte.AporteId</td>
+                    <td>@aporte.Persona</td>
+                    <td>@aporte.Monto</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-4">
+            <label>Conteo</label>
+            <span class="form-control">@Conteo</span>
+        </div>
+
+        <div class="col-4">
+            <label>Total</label>
+            <span class="form-control">@Total</span>
+        </div>
+    </div>
+
+</EditForm>
+
+
+
+@code {
+    public string Filtro { get; set; }
+    public DateTime Desde { get; set; } = new DateTime(2000, 1, 1);
+    public DateTime Hasta { get; set; } = DateTime.Today;
+    public int Conteo { get; set; }
+    public double Total { get; set; }
+    public string Persona { get; set; }
+    public List<Aporte> lista { get; set; } = new List<Aporte>();
+
+    private void Buscar()
+    {
+        lista = aporteBLL.GetAportes();
+        {
+            Conteo = lista.Count;
+
+            Total = lista.Sum(m => m.Monto);
+        }
+
+    }
+}

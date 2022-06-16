@@ -1160,8 +1160,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Microsoft.EntityFrameWorkCore.Sqlite >= 6.0.5",
-      "Microsoft.EntityFrameWorkCore.Tools >= 6.0.5"
+      "Microsoft.EntityFrameworkCore.Sqlite >= 6.0.5",
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.5"
     ]
   },
   "packageFolders": {
@@ -1170,11 +1170,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Aplicada 1\\RegistroA\\RegistroA.csproj",
-      "projectName": "RegistroA",
-      "projectPath": "C:\\Aplicada 1\\RegistroA\\RegistroA.csproj",
+      "projectUniqueName": "C:\\Users\\usario\\Desktop\\New folder\\AP1_Yunilda\\Registro_AP1.csproj",
+      "projectName": "Registro_AP1",
+      "projectPath": "C:\\Users\\usario\\Desktop\\New folder\\AP1_Yunilda\\Registro_AP1.csproj",
       "packagesPath": "C:\\Users\\usario\\.nuget\\packages\\",
-      "outputPath": "C:\\Aplicada 1\\RegistroA\\obj\\",
+      "outputPath": "C:\\Users\\usario\\Desktop\\New folder\\AP1_Yunilda\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\usario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1203,11 +1203,11 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "Microsoft.EntityFrameWorkCore.Sqlite": {
+          "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[6.0.5, )"
           },
-          "Microsoft.EntityFrameWorkCore.Tools": {
+          "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",

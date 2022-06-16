@@ -10,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddTransient<AporteBLL>();
 
+
 builder.Services.AddDbContext<Contexto>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString
 ("ConStr"))

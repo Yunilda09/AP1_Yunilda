@@ -1,0 +1,118 @@
+@page "/Aporte"
+@page "/Aporte/{AporteId:int}"
+
+@inject AporteBLL aporteBLL
+
+
+<EditForm Model="aporte" OnValidSubmit="@Guardar">
+    <DataAnnotationsValidator />
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Registro de Aportes</h3>
+        </div>
+        <div class="card-body">
+            <div class="form-row aling-items-center">
+                <div class="col">
+                    <div class="form-group">
+                        <div class="input-group" style="margin: 2px;">
+                            <span class="input-group-text" style="background-color: #c5c5c550;witdth: 20%"> Aportes Id</span>
+                            <InputNumber @bind-Value="aporte.AporteId" class="form-group col-md-3" />
+                            <div class="input-group-append">
+                                <button type="button" style="z-index: ;0" class="btn btn-primary input-group-text"
+                                    @onclick="Buscar"><span class="oi oi-magnifying-glass"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-5">
+                <label>Persona</label>
+                <InputText @bind-Value="aporte.Persona" class="form-control" />
+                <ValidationMessage For="@(() => aporte.Persona)" />
+            </div>
+
+            <div class="form-group col-md-5">
+                <label>Monto</label>
+                <InputNumber @bind-Value="aporte.Monto" class="form-control" />
+                <ValidationMessage For="@(() => aporte.Monto)" />
+            </div>
+
+            <div class="card-footer">
+                <div class="form-group text-center" display: inline-block>
+                    <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo">Nuevo</button>
+                    <button type="submit" class="btn btn-lg btn-success">Guardar</button>
+                    <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</EditForm>
+@code {
+
+    [Parameter]
+    public int AporteId { get; set; }
+    public Aporte aporte { get; set; } = new Aporte();
+
+    protected override void OnInitialized()
+    {
+        if (AporteId > 0)
+            Buscar();
+    }
+
+    private void Nuevo()
+    {
+        aporte = new Aporte();
+    }
+
+    private void Buscar()
+    {
+        if (aporte.AporteId > 0)
+        {
+            var encontrado = aporteBLL.Buscar(aporte.AporteId);
+            Nuevo();
+            if (encontrado != null)
+                this.aporte = encontrado;
+            else
+            {
+                { }
+            }
+
+        }
+    }
+
+    public void Guardar()
+    {
+        var guardado = aporteBLL.Guardar(aporte);
+
+        if (guardado)
+        {
+            Nuevo();
+        }
+        else
+        {
+
+        }
+
+    }
+
+    public void Eliminar()
+    {
+        bool eliminado;
+
+        eliminado = aporteBLL.Eliminar(aporte.AporteId);
+
+        if (eliminado)
+        {
+            Nuevo();
+        }
+        else
+        {
+            { }
+        }
+
+    }
+
+}
